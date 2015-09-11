@@ -45,5 +45,28 @@ end
 # Part 3
 
 class BookInStock
-# YOUR CODE HERE
+  attr_reader :isbn, :price
+  attr_accessor :isbn, :price
+
+  def initialize(isbn, price)
+    @isbn = isbn
+    @price = price
+    raise ArgumentError.new("Entered invalid ISBN") unless isbn.length > 0
+    raise ArgumentError.new("Price must be greater than 0") unless price > 0
+  end
+
+  def isbn= (isbn)
+    @isbn = isbn
+  end
+
+  def price= (price)
+    price = price.to_f
+    @price = price
+  end
+
+
+  def price_as_string
+    format("$%.2f", @price)
+  end
+  
 end
